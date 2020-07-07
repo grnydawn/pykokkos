@@ -2,17 +2,14 @@ import sys
 import pykokkos
 
 
-@pykokkos.functor
-def hello(i):
-    print("Hello %d!" % i)
+@pykokkos.math_functor
+def hello_functor( i:int ) -> None:
+    #print("Hello %d!" % i)
+    print("Hello")
 
 
-def main():
+def pykokkos_main():
 
-    pykokkos.parallel_for(10, hello)
+    pykokkos.parallel_for(10, hello_functor)
 
     return 0
-
-
-if __name__ == "__main__":
-    sys.exit(main())
